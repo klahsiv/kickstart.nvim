@@ -118,6 +118,19 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
+vim.g.clipboard = {
+  name = 'win32yank-wsl',
+  copy = {
+    ['+'] = { 'win32yank.exe', '-i', '--crlf' },
+    ['*'] = { 'win32yank.exe', '-i', '--crlf' },
+  },
+  paste = {
+    ['+'] = { 'win32yank.exe', '-o', '--lf' },
+    ['*'] = { 'win32yank.exe', '-o', '--lf' },
+  },
+  cache_enabled = true,
+}
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -475,7 +488,6 @@ require('lazy').setup({
       },
     },
   },
-  { 'mfussenegger/nvim-jdtls' },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -486,8 +498,9 @@ require('lazy').setup({
       { 'mason-org/mason.nvim', opts = {} },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
+      'nvim-java/nvim-java',
       -- Useful status updates for LSP.
+      { 'mfussenegger/nvim-jdtls' },
       { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
@@ -733,6 +746,15 @@ require('lazy').setup({
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
+          -- jdtls = function()
+          --   require('java').setup {
+          --     -- Your custom jdtls settings goes here
+          --   }
+          --
+          --   require('lspconfig').jdtls.setup {
+          --     -- Your custom nvim-java configuration goes here
+          --   }
+          -- end,
         },
       }
     end,
