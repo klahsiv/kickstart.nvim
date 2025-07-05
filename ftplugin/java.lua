@@ -3,7 +3,6 @@ local jdtls_path = home .. '/.local/share/nvim/mason/packages/jdtls'
 
 local config = {
   cmd = {
-    -- Use Java 21 explicitly
     '/usr/lib/jvm/java-21-openjdk-amd64/bin/java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
@@ -22,6 +21,12 @@ local config = {
     jdtls_path .. '/config_linux',
     '-data',
     home .. '/.cache/jdtls/workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
+  },
+
+  settings = {
+    java = {
+      implementationsCodeLens = { enabled = true },
+    },
   },
   root_dir = require('jdtls.setup').find_root { 'gradlew', '.git', 'mvnw' },
 }
