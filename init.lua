@@ -246,6 +246,18 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
+vim.filetype.add {
+  extension = {
+    vs = 'glsl',
+    fs = 'glsl',
+    gs = 'glsl',
+    cs = 'glsl',
+    vert = 'glsl',
+    frag = 'glsl',
+    geom = 'glsl',
+    comp = 'glsl',
+  },
+}
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
