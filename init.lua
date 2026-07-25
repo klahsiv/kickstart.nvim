@@ -159,12 +159,12 @@ do
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
   -- Setting tab to 2 spaces
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.softtabstop = 2
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
+  vim.opt.expandtab = true
+  vim.opt.softtabstop = 2
 
--- Preview substitutions live, as you type!
+  -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
 
   -- Show which line your cursor is on
@@ -709,9 +709,10 @@ do
   --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
-      local servers = {
-        clangd = {},
-        gopls = {},
+  local servers = {
+    clangd = {},
+    gopls = {},
+    ols = {},
     -- pyright = {},
     -- rust_analyzer = {},
     --
